@@ -1,0 +1,67 @@
+{
+  "name": "@versal/page-resources",
+  "version": "0.1.18",
+  "description": "Common page-level resources for Versal frontend apps",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/versal/frontend-page-resources"
+  },
+  "author": "Versal engineering",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/versal/frontend-page-resources/issues"
+  },
+  "files": [
+    "lib",
+    "dist"
+  ],
+  "homepage": "https://github.com/versal/frontend-page-resources",
+  "scripts": {
+    "dev": "NODE_ENV=development npm-run-all --parallel watch:build watch:test",
+    "build": "NODE_ENV=production rimraf lib && babel --copy-files src --out-dir lib",
+    "watch:build": "rimraf lib && babel src --watch --copy-files --out-dir lib",
+    "prepublish": "npm-run-all build",
+    "lint": "standard",
+    "test": "NODE_ENV=test mocha --require babel-core/register 'src/**/__tests__/*.test.js'",
+    "watch:test": "mocha --watch --require babel-core/register 'src/**/__tests__/*.test.js'",
+    "pretest": "standard"
+  },
+  "dependencies": {
+    "newrelic": "1.27.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.2",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "cheerio": "^1.0.0-rc.2",
+    "expect": "^1.20.2",
+    "mocha": "^4.0.1",
+    "npm-run-all": "^4.1.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "rimraf": "^2.6.2",
+    "standard": "^10.0.3"
+  },
+  "babel": {
+    "presets": [
+      "latest",
+      "react",
+      "stage-0"
+    ]
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "it",
+      "describe",
+      "beforeEach",
+      "afterEach"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
